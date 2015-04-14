@@ -7,14 +7,14 @@ example:
 
   import ParamikoHelper
   
-  ip = '10.0.0.1'
-  username = 'uname'
-  password = 'pword'
-  
-  conn_string = "%s,%s,%s" % (ip,username,password)
-  ssh = ParamikoHelper.ConnectToDevice()
-  ssh.add_host(conn_string)
-  ssh.connect()
-  output = ssh.command("show version")
-  print output
+  ip = '10.0.0.1' <br />
+  username = 'uname' <br />
+  password = 'pword' <br />
+  <br />
+  conn_string = "%s,%s,%s" % (ip,username,password) <br />
+  ssh = ParamikoHelper.ConnectToDevice() <br />
+  ssh.add_host(conn_string) <br />
+  ssh.connect() <br />
+  output = ssh.command("show version") <br />
+  print output <br />
   ssh.close()
