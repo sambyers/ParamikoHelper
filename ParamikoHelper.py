@@ -28,7 +28,7 @@ class ConnectToDevice():
             self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             self.client.connect(host[0],username=host[1],password=host[2], look_for_keys=False, allow_agent=False)
             self.connections.append(self.client)
-
+    # Rewrite this to use the transport class instead of SSHClient.
     def command(self,command):
         """Execute this command on all hosts in the list and return output as string"""
         if command:
