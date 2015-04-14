@@ -1,4 +1,4 @@
-__author__ = 'Sam Byers'
+__author__ = 'https://github.com/swabyears'
 import paramiko
 '''
 Basic wrapper for Paramiko
