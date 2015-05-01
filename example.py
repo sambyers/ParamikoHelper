@@ -12,6 +12,6 @@ ssh = ParamikoHelper.ConnectToDevice()
 ssh.add_host(host1)
 ssh.add_host(host2)
 ssh.connect()
-output = ssh.command("show version") 
+output = ssh.command("show version\n")
 print output 
 ssh.close()
