@@ -1,26 +1,28 @@
 __author__ = 'https://github.com/swabyears'
 import paramiko
-from time import sleep
+'''
+Basic wrapper for Paramiko
+'''
+# For paramiko debugging
+# paramiko.common.logging.basicConfig(level=paramiko.common.DEBUG)
 
-class ParamikoHelper():
+class ConnectToDevice():
+
     def __init__(self):
         self.hosts = []
         self.connections = []
 
     def add_host(self, args):
         """
-        :param args: IPs or domain names
-        :return: nothing
+        add hosts to the connection list
         """
         if args:
             self.hosts.append(args.split(','))
         else:
-            print 'usage: add_host("x.x.x.x,x.x.x.x")'
+            print 'usage: host'
 
     def connect(self):
-        """
-        :return: nothing
-        """
+        """Connect to hosts in host list"""
         for host in self.hosts:
             self.client = paramiko.SSHClient()
             self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -28,18 +30,14 @@ class ParamikoHelper():
             self.connections.append(self.client)
 
     def command(self,command):
-        '''
-        :param command: IOS command to execute on the connected hosts
-        :return: the text output from the devices
-        '''
+        """Execute this command on all hosts in the list and return output as string"""
         if command:
             for host, conn in zip(self.hosts, self.connections):
-                shell = conn.invoke_shell()
-                shell.send("terminal length 0\n")
-                sleep(2)
-                shell.send(command)
-                sleep(2)
-                output = shell.recv(10000)
+                stdin, stdout, stderr = conn.exec_command(command)
+                stdin.close()
+                output = ''
+                for line in stdout.read().splitlines():
+                    output += "%s\n" % (line)
                 return output
 
         else:

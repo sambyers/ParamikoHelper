@@ -1,4 +1,4 @@
-import ParamikoHelper
+from ParamikoHelper import ParamikoHelper
 
 ip = '10.0.0.1' 
 username = 'uname'
