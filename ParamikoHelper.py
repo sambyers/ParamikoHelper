@@ -2,7 +2,7 @@ __author__ = 'https://github.com/swabyears'
 import paramiko
 from time import sleep
 
-class ParamikoHelper():
+class ConnectToDevice():
     def __init__(self):
         self.hosts = []
         self.connections = []
