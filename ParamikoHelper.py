@@ -33,12 +33,14 @@ class ConnectToDevice():
         :return: the text output from the devices
         '''
         if command:
+            output = ''
             for host, conn in zip(self.hosts, self.connections):
                 shell = conn.invoke_shell()
                 shell.send(command)
                 sleep(2)
-                output = shell.recv(50000)
-                return output
+                rcv = shell.recv(50000)
+                output = output + rcv
+            return output
 
         else:
             return 'No command entered.'
