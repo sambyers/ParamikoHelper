@@ -35,11 +35,9 @@ class ConnectToDevice():
         if command:
             for host, conn in zip(self.hosts, self.connections):
                 shell = conn.invoke_shell()
-                shell.send("terminal length 0\n")
-                sleep(2)
                 shell.send(command)
                 sleep(2)
-                output = shell.recv(10000)
+                output = shell.recv(50000)
                 return output
 
         else:
