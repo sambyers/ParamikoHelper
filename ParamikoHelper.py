@@ -29,7 +29,7 @@ class ConnectToDevice():
 
     def command(self,command):
         '''
-        :param command: IOS command to execute on the connected hosts
+        :param command: Command to execute on the connected hosts
         :return: the text output from the devices
         '''
         if command:
