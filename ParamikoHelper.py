@@ -1,4 +1,3 @@
-__author__ = 'https://github.com/swabyears'
 import paramiko
 '''
 Basic wrapper for Paramiko
